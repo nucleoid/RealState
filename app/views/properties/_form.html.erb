@@ -1,0 +1,92 @@
+<%= form_for(property) do |f| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :region %>
+    <%= f.text_field :region %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code %>
+    <%= f.number_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bedrooms %>
+    <%= f.number_field :bedrooms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bathrooms %>
+    <%= f.number_field :bathrooms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :livable_area_square_feet %>
+    <%= f.number_field :livable_area_square_feet %>
+  </div>
+
+  <div class="field">
+    <%= f.label :land_size_acres %>
+    <%= f.text_field :land_size_acres %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :property_type %>
+    <%= f.text_field :property_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :features %>
+    <%= f.text_area :features %>
+  </div>
+
+  <div class="field">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

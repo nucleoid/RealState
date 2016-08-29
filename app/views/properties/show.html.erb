@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @property.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @property.city %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @property.region %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @property.postal_code %>
+</p>
+
+<div style="width: 800px;">
+  <div id="map" style="width: 800px; height: 400px;"></div>
+</div>
+
+<p>
+  <strong>Price:</strong>
+  <%= @property.price %>
+</p>
+
+<p>
+  <strong>Bedrooms:</strong>
+  <%= @property.bedrooms %>
+</p>
+
+<p>
+  <strong>Bathrooms:</strong>
+  <%= @property.bathrooms %>
+</p>
+
+<p>
+  <strong>Livable area square feet:</strong>
+  <%= @property.livable_area_square_feet %>
+</p>
+
+<p>
+  <strong>Land size acres:</strong>
+  <%= @property.land_size_acres %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @property.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @property.description %>
+</p>
+
+<p>
+  <strong>Property type:</strong>
+  <%= @property.property_type %>
+</p>
+
+<p>
+  <strong>Features:</strong>
+  <%= @property.features %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @property.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @property.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @property.maps_hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  });
+<% end %>
