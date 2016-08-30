@@ -17,7 +17,7 @@
 <% end %>
 
 <% @properties.each do |property| %>
-  <div class="row row-striped clickable-row" data-href="<%= url_for property %>">
+  <div class="row row-striped clickable-row hover-div" data-href="<%= url_for property %>">
     <div class="col-sm-1 no-left-padding"><%= image_tag property.featured_image.url, {height: '70'} %></div>
     <div class="col-sm-2"><%= truncate(property.title, length: 20) %></div>
     <div class="col-sm-2"><%= property.full_street_address %></div>
