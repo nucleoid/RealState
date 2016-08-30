@@ -60,4 +60,17 @@ describe Property do
       expect(property.full_street_address).to eq "20 Pine St 1710 New York, NY 10005 US"
     end
   end
+
+  context 'when retrieving the featured image' do
+    let(:property_featured_image) { build(:property, images: [not_featured_image1, featured_image, not_featured_image2]) }
+    let(:property_no_images) { build(:property, images: []) }
+    let(:property_no_featured_image) { build(:property, images: [not_featured_image1, not_featured_image2]) }
+    let(:not_featured_image1) { build(:image, url: 'one')}
+    let(:not_featured_image2) { build(:image, url: 'two')}
+    let(:featured_image) { build(:image_featured, url: 'three')}
+
+    it { expect(property_featured_image.featured_image.url).to eq featured_image.url }
+    it { expect(property_no_images.featured_image.url).to eq 'default_featured_image.png' }
+    it { expect(property_no_featured_image.featured_image.url).to eq not_featured_image1.url }
+  end
 end

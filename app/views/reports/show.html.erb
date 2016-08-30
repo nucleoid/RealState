@@ -1,36 +1,37 @@
-<p>
-  <strong>Name:</strong>
-  <%= @report.name %>
-</p>
-
-<p>
-  <strong>Sql query:</strong>
-  <%= @report.sql_query %>
-</p>
-
-<p>
-  <strong>Report:</strong>
-  <table>
-    <thead>
-    <tr>
-      <% @report.columns.each do |col| %>
-        <th><%= col.titleize %></th>
-      <% end %>
-    </tr>
-    </thead>
-    <tbody>
-    <% @report.values.each do |row| %>
-        <tr>
-        <% row.each do |v| %>
-          <td><%= v %></td>
+<div class="pull-right"><%= link_to 'Export to PDF', export_report_path(@report) %> |
+  <%= link_to 'Edit', edit_report_path(@report) %> | <%= link_to 'Back', reports_path %></div> <br>
+<div class="row">
+  <div class="col-sm-2">
+    <strong>Name:</strong>
+    <%= @report.name %>
+  </div>
+  <div class="col-sm-10">
+    <strong>Sql query:</strong>
+    <%= @report.sql_query %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2">
+    <strong>Current output:</strong>
+  </div>
+  <div class="col-sm-10">
+    <table>
+      <thead>
+      <tr>
+        <% @report.columns.each do |col| %>
+          <th><%= col.titleize %></th>
         <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-</p>
-
-<%= link_to 'Export to PDF', export_report_path(@report) %> |
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+      </tr>
+      </thead>
+      <tbody>
+      <% @report.values.each do |row| %>
+          <tr>
+          <% row.each do |v| %>
+            <td><%= v %></td>
+          <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

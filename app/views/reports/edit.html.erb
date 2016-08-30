@@ -1,5 +1,5 @@
 <h1>Editing Report</h1>
 
-<%= render 'form', report: @report %>
+<div class="pull-right"><%= link_to 'Show', @report %> | <%= link_to 'Back', reports_path %> | <%= link_to 'Destroy', @report, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 
-<%= link_to 'Show', @report %> | <%= link_to 'Back', reports_path %> | <%= link_to 'Destroy', @report, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= render 'form', report: @report %>

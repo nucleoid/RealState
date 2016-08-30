@@ -2,15 +2,21 @@ User.create(email: 'admin@mail.com', role: 'ADMIN', password: 'password', passwo
 User.create(email: 'agent@mail.com', role: 'AGENT', password: 'password', password_confirmation: 'password', confirmed_at: DateTime.now)
 User.create(email: 'customer_user@mail.com', role: 'CUSTOMER_USER', password: 'password', password_confirmation: 'password', confirmed_at: DateTime.now)
 
-Property.create(address: "20 Pine St 1710", city: "New York", state: State.find_key(:ny), postal_code: 10005, price: 122500.00, bedrooms: 1,
+prop = Property.create(address: "20 Pine St 1710", city: "New York", state: State.find_key(:ny), postal_code: 10005, price: 122500.00, bedrooms: 1,
   bathrooms: 1, livable_area_square_feet: 1100, land_size_acres: 0.15 , title: "Steps to the city",
   description: "Step in to this giant loft with a little over 1100 sf and immediately you will begin to the feel generous and spacious layout.",
   property_type: PropertyType.find_key(:apartment), features: [Feature.find_key(:pool), Feature.find_key(:LAUNDRY)], latitude: nil, longitude: nil, is_sold: false)
+prop.images.create(url: 'http://photos1.zillowstatic.com/p_f/IS9t4gd1bacd160000000000.jpg', is_featured: false)
+prop.images.create(url: 'http://photos2.zillowstatic.com/p_f/ISp5dz4r4hag760000000000.jpg', is_featured: false)
+prop.images.create(url: 'http://maps.googleapis.com/maps/api/streetview?client=gme-truliainc&size=640x480&sensor=false&location=45.724525%2C-94.47628&signature=wsJZ45Nj6accHBOC29pfpg6GyRQ=', is_featured: true)
 
-Property.create(address: "111 Main St", city: "Holdingford", state: State.find_key(:mn), postal_code: 56340, price: 189000.00, bedrooms: 4,
+prop2 = Property.create(address: "111 Main St", city: "Holdingford", state: State.find_key(:mn), postal_code: 56340, price: 189000.00, bedrooms: 4,
   bathrooms: 2, livable_area_square_feet: 1500, land_size_acres: 1.5, title: "Small town corner",
   description: "This lovely city corner lot has great access to the town and views of the country side.",
   property_type: PropertyType.find_key(:DETACHED_HOME), features: [Feature.find_key(:LAUNDRY), Feature.find_key(:GARAGE), Feature.find_key(:CORNER_LOT)], latitude: nil, longitude: nil, is_sold: true)
+prop2.images.create(url: 'http://images.kw.com/listings/8/0/1/8014622/1465994760992__kwipfn01_1_.jpg', is_featured: true)
+prop2.images.create(url: 'http://ap.rdcpix.com/540656623/f18ca0fbedbcfd8dcfb1e8ce911609dfl-m5xd-w640_h480_q80.jpg', is_featured: false)
+prop2.images.create(url: 'http://photos3.zillowstatic.com/p_f/IShzanmk092j760000000000.jpg', is_featured: false)
 
 Property.create(address: "1965 Moorhead Rd", city: "Cloquet", state: State.find_key(:mn), postal_code: 55720, price: 339000.00, bedrooms: 4,
     bathrooms: 4, livable_area_square_feet: 3592, land_size_acres: .35, title: "Stunning home located on over 6 acres!",

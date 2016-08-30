@@ -33,5 +33,16 @@ RSpec::Matchers.define :validate_length_attribute do |attribute, length|
  end
 end
 
+RSpec::Matchers.define :validate_url_attribute do |attribute|
+ match do |model|
+   model.valid?
+   expect(model.errors.has_key?(attribute)).to be_truthy and model.errors[attribute].first.include?("valid url")
+ end
+end
 
-
+RSpec::Matchers.define :allow_valid_attribute do |attribute|
+ match do |model|
+   model.valid?
+   expect(model.errors.has_key?(attribute)).to be_falsey
+ end
+end

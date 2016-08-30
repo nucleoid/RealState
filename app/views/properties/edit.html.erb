@@ -1,5 +1,6 @@
 <h1>Editing Property</h1>
 
-<%= render 'form', property: @property %>
+<div class="pull-right"><%= link_to 'Back', properties_path %> | <%= link_to 'Manage Images', property_images_path(@property) %> | <%= link_to 'Show', @property %> |
+   <%= link_to 'Destroy', @property, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 
-<%= link_to 'Show', @property %> | <%= link_to 'Back', properties_path %> | <%= link_to 'Destroy', @property, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= render 'form', property: @property %>

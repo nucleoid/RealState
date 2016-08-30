@@ -1,5 +1,5 @@
 <h1>New Report</h1>
 
-<%= render 'form', report: @report %>
+<div class="pull-right"><%= link_to 'Back', reports_path %></div>
 
-<%= link_to 'Back', reports_path %>
+<%= render 'form', report: @report %>

@@ -7,7 +7,7 @@
   </div>
 <% end %>
 <div class="row">
-  <div class="pull-sm-right"><%= link_to 'Back', properties_path %> <% if current_user.is_agent? %> | <%= link_to 'Edit', edit_property_path(@property) %> | <%= link_to 'Destroy', @property, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></div>
+  <div class="pull-sm-right"><%= link_to 'Back', properties_path %> <% if current_user.is_agent? %> | <%= link_to 'Edit', edit_property_path(@property) %> | <%= link_to @property.images.empty? ? 'Add Images' : 'Manage Images', property_images_path(@property) %> | <%= link_to 'Destroy', @property, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></div>
 
   <div class="col-sm-3">
     <strong>Title:</strong>
@@ -63,17 +63,25 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-sm-12">
+    <% @property.images.each do |image| %>
+      <div class="property-image"><span class="featured-image-text"><% if image.is_featured? %>Featured Image<% end %></span><br><%= image_tag image.url, {height: '150'} %></div>
+    <% end %>
+  </div>
+</div>
+
 <div style="width: 800px; margin-top: 20px">
   <div id="map" style="width: 500px; height: 300px;"></div>
 </div>
 
 <%= javascript_tag do %>
-  $(document).ready(function(){
+  $(document).on('turbolinks:load', function(){
     map = new GMaps({
       div: '#map',
       lat: <%= @property.latitude %>,
       lng: <%= @property.longitude %>,
-      zoom: 15
+      zoom: 14
     });
     map.drawOverlay({
       lat: map.getCenter().lat(),

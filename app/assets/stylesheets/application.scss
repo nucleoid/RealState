@@ -24,9 +24,18 @@
   margin-bottom: 2em;
 }
 
+.logo img {
+  background-color: #ffffff;
+}
+
 a:hover.logo {
   text-decoration: none;
-  background-color: #3f4244;
+  background-color: #ffffff;
+}
+
+.logo-text {
+  color: white;
+  margin-left: 2em;
 }
 
 .logged-in {
@@ -44,4 +53,16 @@ a:hover.logo {
 
 .field label {
   margin: 0 1em 0 0.1em;
+}
+
+.no-left-padding {
+  padding-left: 0;
+}
+
+.pull-right {
+  float: right;
+}
+
+.margin-right {
+  margin-right: 2em;
 }

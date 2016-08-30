@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_resources, only: [:index, :show, :new, :edit, :update, :destroy]
+  before_action :set_resources
 
   def index
     @images = @property.images.all
@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to [@property, @image], notice: 'Image was successfully created.' }
+        format.html { redirect_to property_images_path(@property), notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to [@property, @image], notice: 'Image was successfully updated.' }
+        format.html { redirect_to property_images_path(@property), notice: 'Image was successfully updated.' }
         format.json { render :show, status: :ok, location: @image }
       else
         format.html { render :edit }

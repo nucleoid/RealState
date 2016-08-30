@@ -1,35 +1,31 @@
-<h1>Properties</h1>
+<h1>Properties</h1>   <% if current_user.is_agent?%><div class="pull-right"><%= link_to 'New Property', new_property_path %></div><br><% end %>
 
 <% if @properties.empty? %>
   <h4>No Properties Available</h4>
 <% else %>
   <div class="row">
-    <div class="col-xs-2 text-primary">Title</div>
+    <div class="col-sm-1 text-primary"> </div>
+    <div class="col-sm-2 text-primary">Title</div>
     <div class="col-sm-2 text-primary">Full Address</div>
-    <div class="col-xs-1 text-primary">Price</div>
-    <div class="col-xs-1 text-primary">Bedrooms</div>
-    <div class="col-xs-1 text-primary">Bathrooms</div>
-    <div class="col-xs-1 text-primary">Sq ft</div>
-    <div class="col-xs-1 text-primary">Acreage</div>
+    <div class="col-sm-1 text-primary">Price</div>
+    <div class="col-sm-1 text-primary">Bedrooms</div>
+    <div class="col-sm-1 text-primary">Bathrooms</div>
+    <div class="col-sm-1 text-primary">Sq ft</div>
+    <div class="col-sm-1 text-primary">Acreage</div>
     <div class="col-sm-1 text-primary">Type</div>
-    <div class="col-sm-1 text-primary">Actions</div>
   </div>
 <% end %>
 
 <% @properties.each do |property| %>
-  <div class="row row-striped">
-    <div class="col-xs-2"><%= property.title %></div>
+  <div class="row row-striped clickable-row" data-href="<%= url_for property %>">
+    <div class="col-sm-1 no-left-padding"><%= image_tag property.featured_image.url, {height: '70'} %></div>
+    <div class="col-sm-2"><%= truncate(property.title, length: 20) %></div>
     <div class="col-sm-2"><%= property.full_street_address %></div>
-    <div class="col-xs-1"><%= number_to_currency(property.price, {precision: 0}) %></div>
-    <div class="col-xs-1"><%= property.bedrooms %></div>
-    <div class="col-xs-1"><%= property.bathrooms %></div>
-    <div class="col-xs-1"><%= number_with_delimiter property.livable_area_square_feet %></div>
-    <div class="col-xs-1"><%= number_with_delimiter property.land_size_acres %></div>
+    <div class="col-sm-1"><%= number_to_currency(property.price, {precision: 0}) %></div>
+    <div class="col-sm-1"><%= property.bedrooms %></div>
+    <div class="col-sm-1"><%= property.bathrooms %></div>
+    <div class="col-sm-1"><%= number_with_delimiter property.livable_area_square_feet %></div>
+    <div class="col-sm-1"><%= number_with_delimiter property.land_size_acres %></div>
     <div class="col-sm-1"><%= PropertyType.description_for(property.property_type) %></div>
-    <div class="col-sm-1"><%= link_to 'Show', property %></div>
   </div>
 <% end %>
-
-<br>
-
-<% if current_user.is_agent?%> <%= link_to 'New Property', new_property_path %> <% end %>

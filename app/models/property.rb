@@ -23,4 +23,12 @@ class Property < ApplicationRecord
   def full_street_address
     "#{address} #{city}, #{state} #{postal_code} US"
   end
+
+  def featured_image
+    if self.images.any?
+      self.images.select {|i| i.is_featured?}.first || self.images.first
+    else
+      Image.new(url: 'default_featured_image.png')
+    end
+  end
 end

@@ -1,19 +1,16 @@
 <h1>Users</h1>
 
+<div class="pull-right"><% if current_user.is_admin?%> <%= link_to 'New User', new_user_path %> <% end %></div><br>
 <div class="row">
-  <div class="col-xs-5 text-primary">Email</div>
+  <div class="col-sm-5 text-primary">Email</div>
   <div class="col-sm-2 text-primary">Role</div>
-  <div class="col-sm-5 text-primary">Actions</div>
+  <div class="col-sm-5 text-primary"> </div>
 </div>
 
 <% @users.each do |user| %>
   <div class="row">
-    <div class="col-xs-5"><%= user.email %></div>
+    <div class="col-sm-5"><%= user.email %></div>
     <div class="col-sm-2"><%= Role.description_for(user.role) %></div>
     <div class="col-sm-5"><%= link_to 'Show', user %> | <%= link_to 'Edit', edit_user_path(user) %></div>
   </div>
 <% end %>
-
-<br>
-
-<% if current_user.is_admin?%> <%= link_to 'New User', new_user_path %> <% end %>

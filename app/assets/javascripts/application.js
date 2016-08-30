@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function() {
+  $('div.clickable-row').unbind('click').on('click', function () {
+    Turbolinks.visit($(this).data("href"), { action: "replace" });
+  });
+});

@@ -1,3 +1,5 @@
+<div class="pull-right"><%= link_to 'Edit', edit_property_image_path(@property, @image) %> | <%= link_to 'Back', property_images_path(@property) %></div>
+
 <p>
   <strong>Url:</strong>
   <%= @image.url %>
@@ -12,6 +14,3 @@
   <strong>Image</strong>
   <%= image_tag @image.url %>
 </p>
-
-<%= link_to 'Edit', edit_property_image_path(@property, @image) %> |
-<%= link_to 'Back', property_images_path(@property) %>
