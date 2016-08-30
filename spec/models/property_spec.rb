@@ -43,6 +43,9 @@ describe Property do
 
   context 'when accessing coordinates' do
     let(:property) { create(:property, latitude: nil, longitude: nil) }
+    before do
+      Geocoder.expects(:search).returns([Geocoder::Result::Base.new({'latitude' => 40.7077299, 'longitude' => -74.0097298})])
+    end
 
     it 'generates the latitude before save' do
       expect(property.latitude).to eq 40.7077299
