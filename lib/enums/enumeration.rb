@@ -35,6 +35,8 @@ class Enumeration
         a << self.display_name(key)
       elsif options[:use] == :val or options[:use] == :value
         a << self.find_key(key)
+      elsif options[:use] == :both
+        a << [self.find_key(key), self.description_for(key)]
       end
     end
     a

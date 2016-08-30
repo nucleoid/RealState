@@ -14,8 +14,8 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :property_type
       t.text :features
-      t.decimal :latitude, precision: 9, scale: 6
-      t.decimal :longitude, precision: 9, scale: 6
+      t.decimal :latitude, precision: 9, scale: 7
+      t.decimal :longitude, precision: 9, scale: 7
 
       t.timestamps
     end

@@ -20,8 +20,8 @@ Property.create(
   description: "Step in to this giant loft with a little over 1100 sf and immediately you will begin to the feel generous and spacious layout.",
   property_type: :APARTMENT,
   features: [:POOL, :LAUNDRY],
-  latitude: 40.7077339,
-  longitude: -74.0119185)
+  latitude: nil,
+  longitude: nil)
 
 Property.create(
   address: "111 Main St",
@@ -37,5 +37,5 @@ Property.create(
   description: "This lovely city corner lot has great access to the town and views of the country side.",
   property_type: :DETACHED_HOME,
   features: [:LAUNDRY, :GARAGE, :CORNER_LOT],
-  latitude: 45.7241647,
-  longitude: -94.4779575)
+  latitude: nil,
+  longitude: nil)

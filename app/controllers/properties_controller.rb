@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :check_for_agent, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /properties
   # GET /properties.json
@@ -69,6 +70,19 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:address, :region, :postal_code, :price, :bedrooms, :bathrooms, :livable_area_square_feet, :land_size_acres, :title, :description, :property_type, :features, :latitude, :longitude)
+      permitted = params.require(:property).permit(:address, :city, :region, :postal_code, :price, :bedrooms, :bathrooms, :livable_area_square_feet, :land_size_acres, :title, :description, :property_type, :is_sold, features: [])
+      if permitted[:features].present?
+        permitted[:features].reject!(&:empty?)
+      end
+      permitted
+    end
+
+    def check_for_agent
+      if !current_user.is_agent?
+        respond_to do |format|
+          format.html { redirect_to @property.nil? ? properties_path : property_path(@property), alert: "Customer Users are not allowed to modify properties!" }
+          format.json { render json: {alert: "Customer Users are not allowed to modify properties!"} }
+        end
+      end
     end
 end

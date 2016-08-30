@@ -22,7 +22,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :region %>
+    <%= f.label :region, 'State/Region' %>
     <%= f.text_field :region %>
   </div>
 
@@ -63,27 +63,27 @@
 
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, {cols: 50, rows: 5} %>
   </div>
 
   <div class="field">
     <%= f.label :property_type %>
-    <%= f.text_field :property_type %>
+    <% PropertyType.to_a(use: :val).each do |pt| %>
+      <%= f.radio_button :property_type, pt %>
+      <%= f.label(pt, PropertyType.description_for(pt)) %>
+    <% end %>
   </div>
 
   <div class="field">
     <%= f.label :features %>
-    <%= f.text_area :features %>
+    <% Feature.to_a(use: :both).each_slice(4) do |fs| %>
+      <%= f.collection_check_boxes :features, fs, :first, :second %><br>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
-  </div>
-
-  <div class="field">
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
+    <%= f.label :is_sold, 'Is Sold?' %>
+    <%= f.check_box :is_sold %>
   </div>
 
   <div class="actions">

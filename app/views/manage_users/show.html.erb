@@ -1,0 +1,47 @@
+
+<div class="row">
+  <div class="pull-sm-right"><%= link_to 'Back', users_path %> | <%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+
+  <div class="col-sm-4">
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </div>
+
+  <div class="col-sm-6">
+    <strong>Role:</strong>
+    <%= Role.description_for(@user.role) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Sign In Count:</strong>
+    <%= number_with_delimiter @user.sign_in_count %>
+  </div>
+  <div class="col-sm-8">
+    <strong>Created At:</strong>
+    <%= @user.created_at.nil? ? 'N/A' : @user.created_at.strftime('%Y-%m-%d %H:%M:%S')%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <strong>Current Sign In At:</strong>
+    <%= @user.current_sign_in_at.nil? ? 'N/A' : @user.current_sign_in_at.strftime('%Y-%m-%d %H:%M:%S')%>
+  </div>
+  <div class="col-sm-8">
+    <strong>Last Sign In At:</strong>
+    <%= @user.last_sign_in_at.nil? ? 'N/A' : @user.last_sign_in_at.strftime('%Y-%m-%d %H:%M:%S')%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">
+    <strong>Confirmed?:</strong>
+    <%= @user.confirmed_at.present? %>
+  </div>
+  <div class="col-sm-10">
+    <strong>Locked?:</strong>
+    <%= @user.locked_at.present? %>
+  </div>
+</div>
