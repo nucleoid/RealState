@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   context 'when creating' do
-    subject {User.new(role: 'BLAH')}
+    subject {User.new(role: 'BLAH', api_auth_token: 'ljklj')}
 
     it { expect(subject).to require_enum_value :role }
+    it { expect(subject).to validate_length_attribute :api_auth_token, 20 }
 
     it 'sets a default role' do
       user = User.new
@@ -13,10 +14,15 @@ RSpec.describe User, type: :model do
       expect(user.role).to eq Role.find_key(:customer_user)
     end
 
-    context 'when requiring attributes' do
-      subject { User.new role: '' }
+    it 'sets an api auth token' do
+      user = User.new
+      user.valid?
+      expect(user.api_auth_token.length).to eq 20
+    end
 
-      it { expect(subject).to require_attribute :role }
+    context 'when requiring attributes' do
+      subject { User.new }
+
       it { expect(subject).to require_attribute :email }  #Devise apparently takes care of this validation
     end
   end

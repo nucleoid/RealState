@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.2.0'
 gem 'geocoder', '~> 1.3.1'
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
+
 # PDF generation
 gem 'prawn', '~> 2.1.0'
 gem 'prawn-table', '~> 0.2.2'

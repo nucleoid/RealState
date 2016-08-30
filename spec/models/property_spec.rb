@@ -12,7 +12,7 @@ describe Property do
 
       it { expect(subject).to require_attribute :address }
       it { expect(subject).to require_attribute :city }
-      it { expect(subject).to require_attribute :region }
+      it { expect(subject).to require_attribute :state }
       it { expect(subject).to require_attribute :postal_code }
       it { expect(subject).to require_attribute :price }
       it { expect(subject).to require_attribute :bedrooms }
@@ -34,10 +34,10 @@ describe Property do
       it { expect(subject).to validate_generic_attribute :land_size_acres, 'must be greater than or equal to 0' }
     end
 
-    context 'when validating state/region' do
-      subject { Property.new region: 'Minnesota'}
+    context 'when validating state' do
+      subject { Property.new state: 'Minnesota'}
 
-      it { expect(subject).to validate_generic_attribute :region, 'must be the two letter abbreviation'}
+      it { expect(subject).to validate_generic_attribute :state, 'must be the two letter abbreviation'}
     end
   end
 
@@ -54,7 +54,7 @@ describe Property do
   end
 
   context 'when generating full street address' do
-    let(:property) { build(:property, address: "20 Pine St 1710", city: "New York", region: "NY", postal_code: 10005, latitude: nil, longitude: nil) }
+    let(:property) { build(:property, address: "20 Pine St 1710", city: "New York", state: State.find_key(:ny), postal_code: 10005, latitude: nil, longitude: nil) }
 
     it 'combines address values' do
       expect(property.full_street_address).to eq "20 Pine St 1710 New York, NY 10005 US"

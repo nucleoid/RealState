@@ -1,0 +1,17 @@
+<p>
+  <strong>Url:</strong>
+  <%= @image.url %>
+</p>
+
+<p>
+  <strong>Is featured:</strong>
+  <%= @image.is_featured %>
+</p>
+
+<p>
+  <strong>Image</strong>
+  <%= image_tag @image.url %>
+</p>
+
+<%= link_to 'Edit', edit_property_image_path(@property, @image) %> |
+<%= link_to 'Back', property_images_path(@property) %>

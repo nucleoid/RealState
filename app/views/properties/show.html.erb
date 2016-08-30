@@ -78,7 +78,7 @@
     map.drawOverlay({
       lat: map.getCenter().lat(),
       lng: map.getCenter().lng(),
-      content: '<div class="overlay"><%= @property.full_street_address %></div>',
+      content: '<div class="overlay"><%= @property.full_street_address %><div class="overlay_arrow above"></div></div>',
       verticalAlign: 'top',
       horizontalAlign: 'center'
     });

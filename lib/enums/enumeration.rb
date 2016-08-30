@@ -42,10 +42,6 @@ class Enumeration
     a
   end
 
-  def self.get(key)
-    self.const_get sanatize_key(key)
-  end
-
   def self.find_key(value)
     key = sanatize_key value
     if @statuses.has_key? key

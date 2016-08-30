@@ -70,7 +70,7 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      permitted = params.require(:property).permit(:address, :city, :region, :postal_code, :price, :bedrooms, :bathrooms, :livable_area_square_feet, :land_size_acres, :title, :description, :property_type, :is_sold, features: [])
+      permitted = params.require(:property).permit(:address, :city, :state, :postal_code, :price, :bedrooms, :bathrooms, :livable_area_square_feet, :land_size_acres, :title, :description, :property_type, :is_sold, features: [])
       if permitted[:features].present?
         permitted[:features].reject!(&:empty?)
       end

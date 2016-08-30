@@ -3,7 +3,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
     create_table :properties do |t|
       t.string :address
       t.string :city
-      t.string :region
+      t.string :state
       t.integer :postal_code
       t.decimal :price, precision: 12, scale: 2
       t.integer :bedrooms

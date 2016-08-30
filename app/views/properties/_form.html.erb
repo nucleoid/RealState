@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :region, 'State/Region' %>
-    <%= f.text_field :region %>
+    <%= f.label :state %>
+    <%= f.select :state, State.to_a(use: :val) %>
   </div>
 
   <div class="field">
