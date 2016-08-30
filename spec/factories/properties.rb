@@ -15,6 +15,7 @@ FactoryGirl.define do
     features [:POOL, :LAUNDRY]
     latitude 40.7077339
     longitude -74.0119185
+    is_sold false
 
     factory :property_two do
       address "111 Main St"
@@ -32,6 +33,7 @@ FactoryGirl.define do
       features [:LAUNDRY, :GARAGE, :CORNER_LOT]
       latitude 45.7241647
       longitude -94.4779575
+      is_sold false
     end
   end
 end

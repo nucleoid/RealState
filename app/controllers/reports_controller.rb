@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :set_report, only: [:show, :edit, :update, :destroy, :export]
+  before_action :check_for_admin
 
   # GET /reports
   # GET /reports.json
@@ -10,6 +11,7 @@ class ReportsController < ApplicationController
   # GET /reports/1
   # GET /reports/1.json
   def show
+    @report.run_report
   end
 
   # GET /reports/new
@@ -58,6 +60,17 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def export
+    @report.run_report
+    begin
+      pdf = ReportPdf.new(@report)
+      headers['Last-Modified'] = Time.now.httpdate
+      send_data pdf.render, :type => 'application/pdf', filename: "#{@report.name.downcase.underscore}_#{DateTime.now.strftime("%m-%d-%Y")}.pdf"
+    rescue StandardError => e
+      redirect_to reports_path, alert: 'Internal Error'
     end
   end
 

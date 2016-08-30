@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :reports
+  resources :reports do
+    member do
+      get :export
+    end
+  end
   devise_for :users, controllers: {registrations: 'users/registrations' }
   resources :properties
   resources :users, path: :manage_users, controller: :manage_users

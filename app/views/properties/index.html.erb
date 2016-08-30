@@ -1,16 +1,20 @@
 <h1>Properties</h1>
 
-<div class="row">
-  <div class="col-xs-2 text-primary">Title</div>
-  <div class="col-sm-2 text-primary">Full Address</div>
-  <div class="col-xs-1 text-primary">Price</div>
-  <div class="col-xs-1 text-primary">Bedrooms</div>
-  <div class="col-xs-1 text-primary">Bathrooms</div>
-  <div class="col-xs-1 text-primary">Sq ft</div>
-  <div class="col-xs-1 text-primary">Acreage</div>
-  <div class="col-sm-1 text-primary">Type</div>
-  <div class="col-sm-1 text-primary">Actions</div>
-</div>
+<% if @properties.empty? %>
+  <h4>No Properties Available</h4>
+<% else %>
+  <div class="row">
+    <div class="col-xs-2 text-primary">Title</div>
+    <div class="col-sm-2 text-primary">Full Address</div>
+    <div class="col-xs-1 text-primary">Price</div>
+    <div class="col-xs-1 text-primary">Bedrooms</div>
+    <div class="col-xs-1 text-primary">Bathrooms</div>
+    <div class="col-xs-1 text-primary">Sq ft</div>
+    <div class="col-xs-1 text-primary">Acreage</div>
+    <div class="col-sm-1 text-primary">Type</div>
+    <div class="col-sm-1 text-primary">Actions</div>
+  </div>
+<% end %>
 
 <% @properties.each do |property| %>
   <div class="row row-striped">

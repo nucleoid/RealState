@@ -16,8 +16,17 @@
 
 @import "bootstrap";
 
+.bg-inverse {
+  background-color: #3f4244;
+}
+
 .navbar, .container {
   margin-bottom: 2em;
+}
+
+a:hover.logo {
+  text-decoration: none;
+  background-color: #3f4244;
 }
 
 .logged-in {

@@ -63,13 +63,4 @@ class ManageUsersController < ApplicationController
     end
     permitted
   end
-
-  def check_for_admin
-    if !current_user.is_admin?
-      respond_to do |format|
-        format.html { redirect_to root_path, alert: "Only admins are allowed to modify users!" }
-        format.json { render json: {alert: "Only admins are allowed to modify users!"} }
-      end
-    end
-  end
 end

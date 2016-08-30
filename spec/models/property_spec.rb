@@ -53,14 +53,6 @@ describe Property do
     end
   end
 
-  context 'when mapping coordinates to a hash' do
-    let(:property) { build(:property, latitude: 40.7077299, longitude: -74.0097298) }
-
-    it 'maps the location hash' do
-      expect(property.maps_hash).to eq [{ lat: BigDecimal.new(40.7077299, 9), lng: BigDecimal.new(-74.0097298, 9), infowindow: "20 Pine St 1710 New York, NY 10005 US" }]
-    end
-  end
-
   context 'when generating full street address' do
     let(:property) { build(:property, address: "20 Pine St 1710", city: "New York", region: "NY", postal_code: 10005, latitude: nil, longitude: nil) }
 
