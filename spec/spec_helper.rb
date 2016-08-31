@@ -56,6 +56,8 @@ RSpec.configure do |config|
   config.before(:each) do
     Geocoder.stubs(:search).returns([Geocoder::Result::Base.new({'latitude' => 40.7077299, 'longitude' => -74.0097298})])
   end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
