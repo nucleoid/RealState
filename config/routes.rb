@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
   resources :users, path: :manage_users, controller: :manage_users
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # test routes
+  get '/application/index' => 'application#index'
+  get '/application/admin' => 'application#admin'
+
   root :to => 'home#index'
 end
