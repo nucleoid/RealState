@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
+  username: realstate
+  password: realstate
   socket: /tmp/mysql.sock
 
 development:
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: RealState_production
-  username: root
+  username: realstate
   password: <%= ENV['REALSTATE_DATABASE_PASSWORD'] %>
