@@ -15,7 +15,7 @@
 
 <% @images.each do |image| %>
   <div class="row">
-    <div class="col-sm-6"><%= truncate image.url, {length: 65} %></div>
+    <div class="col-sm-6"><%= truncate image.url, {length: 60} %></div>
     <div class="col-sm-1"><%= image.is_featured %></div>
     <div class="col-sm-3"><%= image_tag image.url, {height: '150'} %></div>
     <div class="col-sm-2"><%= link_to 'Show', property_image_path(@property, image) %> | <%= link_to 'Edit', edit_property_image_path(@property, image) %> | <%= link_to 'Destroy', [@property, image], method: :delete, data: { confirm: 'Are you sure?' } %></div>
